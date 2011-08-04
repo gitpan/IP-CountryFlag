@@ -1,0 +1,27 @@
+---
+abstract: 'Interface to fetch country flag of an IP.'
+author:
+  - 'Mohammad S Anwar <mohammad.anwar@yahoo.com>'
+build_requires:
+  Data::Validate::IP: 0.10
+  File::Spec::Functions: 3.30
+  HTTP::Request: 1.40
+  LWP::UserAgent: 2.33
+  Mouse: 0.93
+  MouseX::Params::Validate: 0.01
+  Readonly: 0
+configure_requires:
+  Module::Build: 0.36
+generated_by: 'Module::Build version 0.3607'
+license: perl
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: IP-CountryFlag
+provides:
+  IP::CountryFlag:
+    file: lib/IP/CountryFlag.pm
+    version: 0.01
+resources:
+  license: http://dev.perl.org/licenses/
+version: 0.01
