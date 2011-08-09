@@ -9,7 +9,7 @@ build_requires:
   LWP::UserAgent: 2.33
   Mouse: 0.93
   MouseX::Params::Validate: 0.01
-  Readonly: 0
+  Readonly: 1.03
 configure_requires:
   Module::Build: 0.36
 generated_by: 'Module::Build version 0.3607'
@@ -21,7 +21,7 @@ name: IP-CountryFlag
 provides:
   IP::CountryFlag:
     file: lib/IP/CountryFlag.pm
-    version: 0.01
+    version: 0.02
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.01
+version: 0.02

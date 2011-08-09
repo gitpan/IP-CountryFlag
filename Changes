@@ -1,4 +1,8 @@
 Revision history for IP-CountryFlag
 
+0.02    Tue Aug 09 15:40:11 2011
+        - Made Readonly v1.03 as minimum requirement.
+        - Prepared the distribution using the Module::Signature v0.68.
+
 0.01    Thu Aug 04 12:00:01 2011
         - First version, released.

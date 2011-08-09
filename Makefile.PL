@@ -9,7 +9,7 @@ WriteMakefile(
     dist          => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
     clean         => { FILES => 'IP-CountryFlag-*' },
     PREREQ_PM     => {
-        'Readonly'    => 0,
+        'Readonly'    => '1.03',
         'Mouse'       => '0.93',
         'HTTP::Request'  => '1.40',
         'LWP::UserAgent' => '2.33',
