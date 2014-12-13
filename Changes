@@ -1,5 +1,14 @@
 Revision history for IP-CountryFlag
 
+0.03    Sat Dec 13 09:30:11 2014
+        - Re-structured the code using 'Moo' i.e. downgraded from 'Mouse'.
+        - Added package IP::CountryFlag::Params to support common data types.
+        - Added package IP::CountryFlag::UserAgent to process api request.
+        - Added package IP::CountryFlag::UserAgent::Exception to process exception.
+        - Deleted Build.PL file.
+        - Deleted SIGNATURE file.
+        - Updated unit test with respect to the above changes.
+
 0.02    Tue Aug 09 15:40:11 2011
         - Made Readonly v1.03 as minimum requirement.
         - Prepared the distribution using the Module::Signature v0.68.

@@ -1,10 +1,10 @@
-package IP::CountryFlag;
+package IP::CountryFlag::UserAgent::Exception;
 
-$IP::CountryFlag::VERSION = '0.03';
+$IP::CountryFlag::Exception::VERSION = '0.03';
 
 =head1 NAME
 
-IP::CountryFlag - Interface to fetch country flag of an IP.
+IP::CountryFlag::UserAgent::Exception - Exception handler for the module IP::CountryFlag.
 
 =head1 VERSION
 
@@ -13,73 +13,27 @@ Version 0.03
 =cut
 
 use 5.006;
-use autodie;
 use Data::Dumper;
-use IP::CountryFlag::UserAgent;
-use File::Spec::Functions qw(catfile);
-use IP::CountryFlag::Params qw(validate);
 
 use Moo;
 use namespace::clean;
-extends 'IP::CountryFlag::UserAgent';
+with 'Throwable';
 
-has 'base_url' => (is => 'ro', default => sub { return 'http://api.hostip.info/flag.php' });
+use overload q{""} => 'as_string', fallback => 1;
 
-=head1 DESCRIPTION
+has method      => (is => 'ro');
+has message     => (is => 'ro');
+has code        => (is => 'ro');
+has reason      => (is => 'ro');
+has filename    => (is => 'ro');
+has line_number => (is => 'ro');
 
-A very thin wrapper for the hostip.info API to get the country flag of an IP address.
+sub as_string {
+    my ($self) = @_;
 
-=head1 METHOD
-
-=head2 save()
-
-Saves the country flag in the given location for the given IP address. It returns the location
-of the country flag where it has been saved.
-
-    use strict; use warnings;
-    use IP::CountryFlag;
-
-    my $countryFlag = IP::CountryFlag->new;
-    print $countryFlag->save({ ip => '12.215.42.19', path => './' });
-
-=cut
-
-sub save {
-    my ($self, $params) = @_;
-
-    my $fields   = { 'ip' => 1, 'path' => 1 };
-    my $url      = $self->_url($fields, $params);
-    my $response = $self->get($url);
-
-    return _save($params, $response->{content});
-}
-
-#
-#
-# PRIVATE METHODS
-
-sub _save {
-    my ($params, $data) = @_;
-
-    my $flag = catfile($params->{path}, $params->{ip} . ".gif");
-    eval {
-        open(FLAG, ">$flag");
-        binmode(FLAG);
-        print FLAG $data;
-        close FLAG;
-
-        return $flag;
-    };
-
-    die("ERROR: Couldn't save flag [$flag][$@].\n") if $@;
-}
-
-sub _url {
-    my ($self, $fields, $params) = @_;
-
-    validate($fields, $params);
-
-    return sprintf("%s?ip=%s", $self->base_url, $params->{ip});
+    return sprintf("%s(): %s (status: %s) file %s on line %d\n",
+                   $self->method, $self->message, $self->code,
+                   $self->filename, $self->line_number);
 }
 
 =head1 AUTHOR
@@ -101,7 +55,7 @@ as I make changes.
 
 You can find documentation for this module with the perldoc command.
 
-    perldoc IP::CountryFlag
+    perldoc IP::CountryFlag::UserAgent::Exception
 
 You can also look for information at:
 
@@ -167,4 +121,4 @@ DEAFilter API itself is distributed under the terms of the Gnu GPLv3 licence.
 
 =cut
 
-1; # End of IP::CountryFlag
+1; # End of IP::CountryFlag::UserAgent::Exception

@@ -1,10 +1,10 @@
-package IP::CountryFlag;
+package IP::CountryFlag::Params;
 
-$IP::CountryFlag::VERSION = '0.03';
+$IP::CountryFlag::Params::VERSION = '0.03';
 
 =head1 NAME
 
-IP::CountryFlag - Interface to fetch country flag of an IP.
+IP::CountryFlag::Params - Placeholder for parameters for IP::CountryFlag.
 
 =head1 VERSION
 
@@ -13,73 +13,43 @@ Version 0.03
 =cut
 
 use 5.006;
-use autodie;
+use strict; use warnings;
 use Data::Dumper;
-use IP::CountryFlag::UserAgent;
-use File::Spec::Functions qw(catfile);
-use IP::CountryFlag::Params qw(validate);
+use Data::Validate::IP qw(is_ipv4 is_ipv6);
+use vars qw(@ISA @EXPORT @EXPORT_OK);
 
-use Moo;
-use namespace::clean;
-extends 'IP::CountryFlag::UserAgent';
+require Exporter;
+@ISA       = qw(Exporter);
+@EXPORT_OK = qw(validate);
 
-has 'base_url' => (is => 'ro', default => sub { return 'http://api.hostip.info/flag.php' });
+sub check_ip   { die "ERROR: Received invalid IP [$_[0]]."    unless (is_ipv4($_[0]) || is_ipv6($_[0])) };
+sub check_path { die "ERROR: Received invalid Path [$_[0]]."  unless (-d "$_[0]")                       };
 
-=head1 DESCRIPTION
+our $FIELDS = {
+    'ip'   => { check => sub { check_ip(@_)   }, type => 's' },
+    'path' => { check => sub { check_path(@_) }, type => 's' },
+};
 
-A very thin wrapper for the hostip.info API to get the country flag of an IP address.
+sub validate {
+    my ($fields, $values) = @_;
 
-=head1 METHOD
+    die "ERROR: Missing params list." unless (defined $values);
 
-=head2 save()
+    die "ERROR: Parameters have to be hash ref" unless (ref($values) eq 'HASH');
 
-Saves the country flag in the given location for the given IP address. It returns the location
-of the country flag where it has been saved.
+    foreach my $field (sort keys %{$fields}) {
+        die "ERROR: Received invalid param: $field"
+            unless (exists $FIELDS->{$field});
 
-    use strict; use warnings;
-    use IP::CountryFlag;
+        die "ERROR: Missing mandatory param: $field"
+            if ($fields->{$field} && !exists $values->{$field});
 
-    my $countryFlag = IP::CountryFlag->new;
-    print $countryFlag->save({ ip => '12.215.42.19', path => './' });
+        die "ERROR: Received undefined mandatory param: $field"
+            if ($fields->{$field} && !defined $values->{$field});
 
-=cut
-
-sub save {
-    my ($self, $params) = @_;
-
-    my $fields   = { 'ip' => 1, 'path' => 1 };
-    my $url      = $self->_url($fields, $params);
-    my $response = $self->get($url);
-
-    return _save($params, $response->{content});
-}
-
-#
-#
-# PRIVATE METHODS
-
-sub _save {
-    my ($params, $data) = @_;
-
-    my $flag = catfile($params->{path}, $params->{ip} . ".gif");
-    eval {
-        open(FLAG, ">$flag");
-        binmode(FLAG);
-        print FLAG $data;
-        close FLAG;
-
-        return $flag;
-    };
-
-    die("ERROR: Couldn't save flag [$flag][$@].\n") if $@;
-}
-
-sub _url {
-    my ($self, $fields, $params) = @_;
-
-    validate($fields, $params);
-
-    return sprintf("%s?ip=%s", $self->base_url, $params->{ip});
+	$FIELDS->{$field}->{check}->($values->{$field})
+            if defined $values->{$field};
+    }
 }
 
 =head1 AUTHOR
@@ -101,7 +71,7 @@ as I make changes.
 
 You can find documentation for this module with the perldoc command.
 
-    perldoc IP::CountryFlag
+    perldoc IP::CountryFlag::Params
 
 You can also look for information at:
 
@@ -167,4 +137,4 @@ DEAFilter API itself is distributed under the terms of the Gnu GPLv3 licence.
 
 =cut
 
-1; # End of IP::CountryFlag
+1; # End of IP::CountryFlag::Params
