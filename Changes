@@ -1,5 +1,8 @@
 Revision history for IP-CountryFlag
 
+0.04    Sun Dec 14 03:00:00 2014
+        - Added missing dependency 'Throwable' to Makefile.PL file.
+
 0.03    Sat Dec 13 09:30:11 2014
         - Re-structured the code using 'Moo' i.e. downgraded from 'Mouse'.
         - Added package IP::CountryFlag::Params to support common data types.

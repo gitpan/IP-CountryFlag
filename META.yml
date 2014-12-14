@@ -21,8 +21,9 @@ requires:
   Data::Validate::IP: '0.10'
   File::Spec::Functions: '3.30'
   Moo: '0'
+  Throwable: '0'
   namespace::clean: '0'
   perl: '5.006'
 resources:
   repository: https://github.com/Manwar/IP-CountryFlag.git
-version: '0.03'
+version: '0.04'
