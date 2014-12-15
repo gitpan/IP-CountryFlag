@@ -1,6 +1,6 @@
 package IP::CountryFlag;
 
-$IP::CountryFlag::VERSION = '0.04';
+$IP::CountryFlag::VERSION = '0.05';
 
 =head1 NAME
 
@@ -8,7 +8,7 @@ IP::CountryFlag - Interface to fetch country flag of an IP.
 
 =head1 VERSION
 
-Version 0.04
+Version 0.05
 
 =cut
 
@@ -63,10 +63,10 @@ sub _save {
 
     my $flag = catfile($params->{path}, $params->{ip} . ".gif");
     eval {
-        open(FLAG, ">$flag");
-        binmode(FLAG);
-        print FLAG $data;
-        close FLAG;
+        open(my $FLAG, ">$flag");
+        binmode($FLAG);
+        print $FLAG $data;
+        close $FLAG;
 
         return $flag;
     };

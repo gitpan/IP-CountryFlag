@@ -16,6 +16,7 @@ WriteMakefile(
         'Test::More' => 0,
     },
     PREREQ_PM     => {
+        'autodie'               => '2.06',
         'Moo'                   => 0,
         'namespace::clean'      => 0,
         'Throwable'             => 0,

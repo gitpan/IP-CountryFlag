@@ -1,5 +1,9 @@
 Revision history for IP-CountryFlag
 
+0.05    Mon Dec 15 11:05:00 2014
+        - Added missing dependency 'autodie' to Mafefile.PL file.
+        - Minor changes to the method _save() to remove warning.
+
 0.04    Sun Dec 14 03:00:00 2014
         - Added missing dependency 'Throwable' to Makefile.PL file.
 

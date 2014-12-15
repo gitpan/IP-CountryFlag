@@ -1,6 +1,6 @@
 package IP::CountryFlag::UserAgent;
 
-$IP::CountryFlag::UserAgent::VERSION = '0.04';
+$IP::CountryFlag::UserAgent::VERSION = '0.05';
 
 =head1 NAME
 
@@ -8,7 +8,7 @@ IP::CountryFlag::UserAgent - Interface to user agent for hostip.info API.
 
 =head1 VERSION
 
-Version 0.04
+Version 0.05
 
 =cut
 
