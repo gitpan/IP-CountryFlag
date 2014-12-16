@@ -1,6 +1,6 @@
 package IP::CountryFlag;
 
-$IP::CountryFlag::VERSION = '0.05';
+$IP::CountryFlag::VERSION = '0.06';
 
 =head1 NAME
 
@@ -8,7 +8,7 @@ IP::CountryFlag - Interface to fetch country flag of an IP.
 
 =head1 VERSION
 
-Version 0.05
+Version 0.06
 
 =cut
 

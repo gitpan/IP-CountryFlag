@@ -1,6 +1,6 @@
 package IP::CountryFlag::Params;
 
-$IP::CountryFlag::Params::VERSION = '0.05';
+$IP::CountryFlag::Params::VERSION = '0.06';
 
 =head1 NAME
 
@@ -8,7 +8,7 @@ IP::CountryFlag::Params - Placeholder for parameters for IP::CountryFlag.
 
 =head1 VERSION
 
-Version 0.05
+Version 0.06
 
 =cut
 

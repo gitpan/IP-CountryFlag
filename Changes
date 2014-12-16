@@ -1,5 +1,8 @@
 Revision history for IP-CountryFlag
 
+0.06    Tue Dec 16 10:53:00 2014
+        - Added missing dependency 'HTTP::Tiny' to Mafefile.PL file.
+
 0.05    Mon Dec 15 11:05:00 2014
         - Added missing dependency 'autodie' to Mafefile.PL file.
         - Minor changes to the method _save() to remove warning.

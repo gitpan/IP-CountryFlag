@@ -1,6 +1,6 @@
 package IP::CountryFlag::UserAgent::Exception;
 
-$IP::CountryFlag::Exception::VERSION = '0.05';
+$IP::CountryFlag::Exception::VERSION = '0.06';
 
 =head1 NAME
 
@@ -8,7 +8,7 @@ IP::CountryFlag::UserAgent::Exception - Exception handler for the module IP::Cou
 
 =head1 VERSION
 
-Version 0.05
+Version 0.06
 
 =cut
 

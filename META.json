@@ -34,6 +34,7 @@
          "requires" : {
             "Data::Validate::IP" : "0.10",
             "File::Spec::Functions" : "3.30",
+            "HTTP::Tiny" : "0",
             "Moo" : "0",
             "Throwable" : "0",
             "autodie" : "2.06",
@@ -50,5 +51,5 @@
          "web" : "https://github.com/Manwar/IP-CountryFlag"
       }
    },
-   "version" : "0.05"
+   "version" : "0.06"
 }

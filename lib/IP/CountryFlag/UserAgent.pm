@@ -1,6 +1,6 @@
 package IP::CountryFlag::UserAgent;
 
-$IP::CountryFlag::UserAgent::VERSION = '0.05';
+$IP::CountryFlag::UserAgent::VERSION = '0.06';
 
 =head1 NAME
 
@@ -8,7 +8,7 @@ IP::CountryFlag::UserAgent - Interface to user agent for hostip.info API.
 
 =head1 VERSION
 
-Version 0.05
+Version 0.06
 
 =cut
 
@@ -37,9 +37,8 @@ sub get {
 
     my $ua       = $self->ua;
     my $response = $ua->request('GET', $url);
-
-    my @caller = caller(1);
-    @caller    = caller(2) if $caller[3] eq '(eval)';
+    my @caller   = caller(1);
+    @caller      = caller(2) if $caller[3] eq '(eval)';
 
     unless ($response->{success}) {
 	IP::CountryFlag::UserAgent::Exception->throw({

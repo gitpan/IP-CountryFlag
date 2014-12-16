@@ -20,6 +20,7 @@ WriteMakefile(
         'Moo'                   => 0,
         'namespace::clean'      => 0,
         'Throwable'             => 0,
+        'HTTP::Tiny'            => 0,
         'Data::Validate::IP'    => '0.10',
         'File::Spec::Functions' => '3.30',
     },

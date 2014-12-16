@@ -20,6 +20,7 @@ no_index:
 requires:
   Data::Validate::IP: '0.10'
   File::Spec::Functions: '3.30'
+  HTTP::Tiny: '0'
   Moo: '0'
   Throwable: '0'
   autodie: '2.06'
@@ -27,4 +28,4 @@ requires:
   perl: '5.006'
 resources:
   repository: https://github.com/Manwar/IP-CountryFlag.git
-version: '0.05'
+version: '0.06'
